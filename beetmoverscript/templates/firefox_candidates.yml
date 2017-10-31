@@ -1,0 +1,129 @@
+---
+metadata:
+    name: "Beet Mover Manifest"
+    description: "Maps {{ product }} artifacts to pretty names for en-US"
+    owner: "release@mozilla.com"
+
+#TODO: we might s/firefox/{product} + some code logic tweak to get devedition for free
+s3_bucket_path: pub/firefox/candidates/{{ version }}-candidates/build{{ build_number }}/
+
+mapping:
+{% for locale in ['en-US'] %}
+  {{ locale }}:
+    target.json:
+      s3_key: {{ platform }}/{{ locale }}/firefox-{{ version }}.json
+      destinations:
+        - {{ platform }}/{{ locale }}/firefox-{{ version }}.json
+    target.mozinfo.json:
+      s3_key: {{ platform }}/{{ locale }}/firefox-{{ version }}.mozinfo.json
+      destinations:
+        - {{ platform }}/{{ locale }}/firefox-{{ version }}.mozinfo.json
+    target.txt:
+      s3_key: {{ platform }}/{{ locale }}/firefox-{{ version }}.txt
+      destinations:
+        - {{ platform }}/{{ locale }}/firefox-{{ version }}.txt
+    target.jsshell.zip:
+      s3_key: jsshell/jsshell-{{ platform }}.zip
+      destinations:
+        - jsshell/jsshell-{{ platform }}.zip
+    mozharness.zip:
+      s3_key: {{ platform }}/{{ locale }}/mozharness.zip
+      destinations:
+        - {{ platform }}/{{ locale }}/mozharness.zip
+    target.langpack.xpi:
+      s3_key: {{ platform }}/xpi/{{ locale }}.xpi
+      destinations:
+        - {{ platform }}/xpi/{{ locale }}.xpi
+    target.crashreporter-symbols.zip:
+      s3_key: {{ platform }}/{{ locale }}/firefox-{{ version }}.crashreporter-symbols.zip
+      destinations:
+        - {{ platform }}/{{ locale }}/firefox-{{ version }}.crashreporter-symbols.zip
+    target.complete.mar:
+      s3_key: update/{{ platform }}/{{ locale }}/firefox-{{ version }}.complete.mar
+      destinations:
+        - update/{{ platform }}/{{ locale }}/firefox-{{ version }}.complete.mar
+      update_balrog_manifest: true
+    # FIXME: potentiall other names here
+    target.bz2.complete.mar:
+      s3_key: update/{{ platform }}/{{ locale }}/firefox-{{ version }}.bz2.complete.mar
+      destinations:
+        - update/{{ platform }}/{{ locale }}/firefox-{{ version }}.bz2.complete.mar
+    # FIXME: potentiall other names here
+    target.bz2.complete.mar.asc:
+      s3_key: update/{{ platform }}/{{ locale }}/firefox-{{ version }}.bz2.complete.mar.asc
+      destinations:
+        - update/{{ platform }}/{{ locale }}/firefox-{{ version }}.bz2.complete.mar.asc
+  {% if platform in ["linux-i686", "linux-x86_64"] %}
+    mar:
+      s3_key: mar-tools/{{ stage_platform }}/mar
+      destinations:
+        - mar-tools/{{ stage_platform }}/mar
+    mbsdiff:
+      s3_key: mar-tools/{{ stage_platform }}/mbsdiff
+      destinations:
+        - mar-tools/{{ stage_platform }}/mbsdiff
+    target.tar.bz2:
+      s3_key: {{ platform }}/{{ locale }}/firefox-{{ version }}.tar.bz2
+      destinations:
+        - {{ platform }}/{{ locale }}/firefox-{{ version }}.tar.bz2
+  {% endif %}
+  {% if platform in ["win32", "win64"] %}
+    mar.exe:
+      s3_key: mar-tools/{{ stage_platform }}/mar.exe
+      destinations:
+        - mar-tools/{{ stage_platform }}/mar.exe
+    mbsdiff.exe:
+      s3_key: mar-tools/{{ stage_platform }}/mbsdiff.exe
+      destinations:
+        - mar-tools/{{ stage_platform }}/mbsdiff.exe
+    target.zip:
+      s3_key: {{ platform }}/{{ locale }}/firefox-{{ version }}.zip
+      destinations:
+        - {{ platform }}/{{ locale }}/firefox-{{ version }}.zip
+    target.installer.exe:
+      s3_key: {{ platform }}/{{ locale }}/Firefox Setup {{ version }}.exe
+      destinations:
+        - {{ platform }}/{{ locale }}/Firefox Setup {{ version }}.exe
+  {% endif %}
+  {% if platform in ["linux-i686"] %}
+    target_info.txt:
+      s3_key: {{ s3_prefix }}linux_info.txt
+      destinations:
+        - {{ s3_prefix }}linux_info.txt
+  {% endif %}
+  {% if platform in ["linux-x86_64"] %}
+    target_info.txt:
+      s3_key: {{ s3_prefix }}linux64_info.txt
+      destinations:
+        - {{ s3_prefix }}linux64_info.txt
+  {% endif %}
+  {% if platform in ["win32"] %}
+    target_info.txt:
+      s3_key: {{ s3_prefix }}win32_info.txt
+      destinations:
+        - {{ s3_prefix }}win32_info.txt
+    {% if "esr" not in version %}
+    target.stub-installer.exe:
+      s3_key: {{ platform }}/{{ locale }}/Firefox Installer.exe
+      destinations:
+        - {{ platform }}/{{ locale }}/Firefox Installer.exe
+    {% endif %}
+  {% endif %}
+  {% if platform in ["win64"] %}
+    target_info.txt:
+      s3_key: {{ s3_prefix }}win64_info.txt
+      destinations:
+        - {{ s3_prefix }}win64_info.txt
+  {% endif %}
+  {% if platform in ["mac"] %}
+    target_info.txt:
+      s3_key: {{ s3_prefix }}macosx64_info.txt
+      destinations:
+        - {{ s3_prefix }}macosx64_info.txt
+    target.dmg:
+      s3_key: {{ platform }}/{{ locale }}/Firefox {{ version }}.dmg
+      destinations:
+        - {{ platform }}/{{ locale }}/Firefox {{ version }}.dmg
+  {% endif %}
+  # TODO: add partials information
+  # TODO: checksums
