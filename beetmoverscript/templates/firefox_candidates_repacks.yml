@@ -4,7 +4,7 @@ metadata:
     description: "Maps {{ product }} artifacts to pretty names for {{ locale }} L10n repack"
     owner: "release@mozilla.com"
 
-#TODO: we might s/firefox/{product} + some code logic tweak to get devedition for free
+# TODO: once firefox is done, we might want to s/firefox/{product} + some code change to get devedition for free
 s3_bucket_path: pub/firefox/candidates/{{ version }}-candidates/build{{ build_number }}/
 
 mapping:
@@ -50,12 +50,12 @@ mapping:
       destinations:
         - {{ platform }}/{{ locale }}/Firefox {{ version }}.dmg
   {% endif %}
-    # FIXME: potentiall other names here
+    # FIXME: potentially other names here
     target.bz2.complete.mar:
       s3_key: update/{{ platform }}/{{ locale }}/firefox-{{ version }}.bz2.complete.mar
       destinations:
         - update/{{ platform }}/{{ locale }}/firefox-{{ version }}.bz2.complete.mar
-    # FIXME: potentiall other names here
+    # FIXME: potentially other names here
     target.bz2.complete.mar.asc:
       s3_key: update/{{ platform }}/{{ locale }}/firefox-{{ version }}.bz2.complete.mar.asc
       destinations:
