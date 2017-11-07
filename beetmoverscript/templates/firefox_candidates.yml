@@ -13,39 +13,39 @@ mapping:
     target.common.tests.zip:
       s3_key: {{ platform }}/{{ locale }}/firefox-{{ version }}.common.tests.zip
       destinations:
-	- {{ platform }}/{{ locale }}/firefox-{{ version }}.common.tests.zip
+        - {{ platform }}/{{ locale }}/firefox-{{ version }}.common.tests.zip
     target.cppunittest.tests.zip:
       s3_key: {{ platform }}/{{ locale }}/firefox-{{ version }}.cppunittest.tests.zip
       destinations:
-	- {{ platform }}/{{ locale }}/firefox-{{ version }}.cppunittest.tests.zip
+        - {{ platform }}/{{ locale }}/firefox-{{ version }}.cppunittest.tests.zip
     target.mochitest.tests.zip:
       s3_key: {{ platform }}/{{ locale }}/firefox-{{ version }}.mochitest.tests.zip
       destinations:
-	- {{ platform }}/{{ locale }}/firefox-{{ version }}.mochitest.tests.zip
+        - {{ platform }}/{{ locale }}/firefox-{{ version }}.mochitest.tests.zip
     target.reftest.tests.zip:
       s3_key: {{ platform }}/{{ locale }}/firefox-{{ version }}.reftest.tests.zip
       destinations:
-	- {{ platform }}/{{ locale }}/firefox-{{ version }}.reftest.tests.zip
+        - {{ platform }}/{{ locale }}/firefox-{{ version }}.reftest.tests.zip
     target.talos.tests.zip:
       s3_key: {{ platform }}/{{ locale }}/firefox-{{ version }}.talos.tests.zip
       destinations:
-	- {{ platform }}/{{ locale }}/firefox-{{ version }}.talos.tests.zip
+        - {{ platform }}/{{ locale }}/firefox-{{ version }}.talos.tests.zip
     target.awsy.tests.zip:
       s3_key: {{ platform }}/{{ locale }}/firefox-{{ version }}.awsy.tests.zip
       destinations:
-	- {{ platform }}/{{ locale }}/firefox-{{ version }}.awsy.tests.zip
+        - {{ platform }}/{{ locale }}/firefox-{{ version }}.awsy.tests.zip
     target.test_packages.json:
       s3_key: {{ platform }}/{{ locale }}/firefox-{{ version }}.test_packages.json
       destinations:
-	- {{ platform }}/{{ locale }}/firefox-{{ version }}.test_packages.json
+        - {{ platform }}/{{ locale }}/firefox-{{ version }}.test_packages.json
     target.web-platform.tests.tar.gz:
       s3_key: {{ platform }}/{{ locale }}/firefox-{{ version }}.web-platform.tests.tar.gz
       destinations:
-	- {{ platform }}/{{ locale }}/firefox-{{ version }}.web-platform.tests.tar.gz
+        - {{ platform }}/{{ locale }}/firefox-{{ version }}.web-platform.tests.tar.gz
     target.xpcshell.tests.zip:
       s3_key: {{ platform }}/{{ locale }}/firefox-{{ version }}.xpcshell.tests.zip
       destinations:
-	- {{ platform }}/{{ locale }}/firefox-{{ version }}.xpcshell.tests.zip
+        - {{ platform }}/{{ locale }}/firefox-{{ version }}.xpcshell.tests.zip
     target.json:
       s3_key: {{ platform }}/{{ locale }}/firefox-{{ version }}.json
       destinations:
