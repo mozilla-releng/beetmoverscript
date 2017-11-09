@@ -163,3 +163,5 @@ mapping:
   {% endif %}
   # TODO: add partials information
   # TODO: checksums
+
+{% endfor %}
