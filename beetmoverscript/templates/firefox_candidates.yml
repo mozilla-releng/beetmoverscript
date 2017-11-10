@@ -89,7 +89,7 @@ mapping:
       s3_key: update/{{ platform }}/{{ locale }}/firefox-{{ version }}.bz2.complete.mar.asc
       destinations:
         - update/{{ platform }}/{{ locale }}/firefox-{{ version }}.bz2.complete.mar.asc
-  {% if platform in ["linux-i686", "linux-x86_64"] %}
+  {% if platform in ["linux-i686", "linux-x86_64", "mac"] %}
     mar:
       s3_key: mar-tools/{{ stage_platform }}/mar
       destinations:
@@ -98,6 +98,8 @@ mapping:
       s3_key: mar-tools/{{ stage_platform }}/mbsdiff
       destinations:
         - mar-tools/{{ stage_platform }}/mbsdiff
+  {% endif %}
+  {% if platform in ["linux-i686", "linux-x86_64"] %}
     target.tar.bz2:
       s3_key: {{ platform }}/{{ locale }}/firefox-{{ version }}.tar.bz2
       destinations:
