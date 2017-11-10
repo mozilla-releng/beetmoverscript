@@ -123,21 +123,21 @@ mapping:
   {% endif %}
   {% if platform in ["linux-i686"] %}
     target_info.txt:
-      s3_key: {{ s3_prefix }}linux_info.txt
+      s3_key: linux_info.txt
       destinations:
-        - {{ s3_prefix }}linux_info.txt
+        - linux_info.txt
   {% endif %}
   {% if platform in ["linux-x86_64"] %}
     target_info.txt:
-      s3_key: {{ s3_prefix }}linux64_info.txt
+      s3_key: linux64_info.txt
       destinations:
-        - {{ s3_prefix }}linux64_info.txt
+        - linux64_info.txt
   {% endif %}
   {% if platform in ["win32"] %}
     target_info.txt:
-      s3_key: {{ s3_prefix }}win32_info.txt
+      s3_key: win32_info.txt
       destinations:
-        - {{ s3_prefix }}win32_info.txt
+        - win32_info.txt
     {% if "esr" not in version %}
     target.stub-installer.exe:
       s3_key: {{ platform }}/{{ locale }}/Firefox Installer.exe
@@ -147,15 +147,15 @@ mapping:
   {% endif %}
   {% if platform in ["win64"] %}
     target_info.txt:
-      s3_key: {{ s3_prefix }}win64_info.txt
+      s3_key: win64_info.txt
       destinations:
-        - {{ s3_prefix }}win64_info.txt
+        - win64_info.txt
   {% endif %}
   {% if platform in ["mac"] %}
     target_info.txt:
-      s3_key: {{ s3_prefix }}macosx64_info.txt
+      s3_key: macosx64_info.txt
       destinations:
-        - {{ s3_prefix }}macosx64_info.txt
+        - macosx64_info.txt
     target.dmg:
       s3_key: {{ platform }}/{{ locale }}/Firefox {{ version }}.dmg
       destinations:
