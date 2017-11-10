@@ -60,5 +60,13 @@ mapping:
       s3_key: update/{{ platform }}/{{ locale }}/firefox-{{ version }}.bz2.complete.mar.asc
       destinations:
         - update/{{ platform }}/{{ locale }}/firefox-{{ version }}.bz2.complete.mar.asc
-  # TODO: add partials information
   # TODO: checksums
+  {% for partial, from_buildid in partials.items() %}
+    {{ partial }}:
+      # TODO: fix the partials name here by pretty nameing {old}-{curr}-partial.mar
+      s3_key: update/{{ platform }}/{{ locale }}/{{ partial }}
+      destinations:
+        - update/{{ platform }}/{{ locale }}/{{ partial }}
+      update_balrog_manifest: true
+      from_buildid: {{ from_buildid }}
+  {% endfor %}

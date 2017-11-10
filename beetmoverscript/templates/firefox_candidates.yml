@@ -161,7 +161,15 @@ mapping:
       destinations:
         - {{ platform }}/{{ locale }}/Firefox {{ version }}.dmg
   {% endif %}
-  # TODO: add partials information
   # TODO: checksums
+  {% for partial, from_buildid in partials.items() %}
+    {{ partial }}:
+      # TODO: fix the partials name here by pretty nameing {old}-{curr}-partial.mar
+      s3_key: update/{{ platform }}/{{ locale }}/{{ partial }}
+      destinations:
+        - update/{{ platform }}/{{ locale }}/{{ partial }}
+      update_balrog_manifest: true
+      from_buildid: {{ from_buildid }}
+  {% endfor %}
 
 {% endfor %}
