@@ -102,6 +102,10 @@ mapping:
       s3_key: {{ platform }}/{{ locale }}/firefox-{{ version }}.tar.bz2
       destinations:
         - {{ platform }}/{{ locale }}/firefox-{{ version }}.tar.bz2
+    target.tar.bz2.asc:
+      s3_key: {{ platform }}/{{ locale }}/firefox-{{ version }}.tar.bz2.asc
+      destinations:
+        - {{ platform }}/{{ locale }}/firefox-{{ version }}.tar.bz2.asc
   {% endif %}
   {% if platform in ["win32", "win64"] %}
     mar.exe:
