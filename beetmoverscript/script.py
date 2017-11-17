@@ -20,7 +20,7 @@ from scriptworker.utils import retry_async, raise_future_exceptions
 
 from beetmoverscript.constants import (
     MIME_MAP, RELEASE_BRANCHES, CACHE_CONTROL_MAXAGE, RELEASE_EXCLUDE,
-    RELEASE_ACTIONS
+    PROMOTION_ACTIONS, RELEASE_ACTIONS,
 )
 from beetmoverscript.task import (
     validate_task_schema, add_balrog_manifest_to_artifacts,
@@ -316,7 +316,7 @@ def enrich_balrog_manifest(context, locale):
         "url_replacements": url_replacements
     }
 
-    if context.action in RELEASE_ACTIONS:
+    if context.action in PROMOTION_ACTIONS + RELEASE_ACTIONS:
         enrich_dict["tc_release"] = True
     else:
         enrich_dict["tc_nightly"] = True
