@@ -215,6 +215,8 @@ def test_enrich_balrog_manifest(context, branch, action):
     context.release_props = get_fake_balrog_props()["properties"]
     context.release_props['platform'] = context.release_props['stage_platform']
     context.release_props['branch'] = branch
+    context.task['payload']['build_number'] = 33
+    context.task['payload']['version'] = '99.0b44'
     context.action = action
 
     expected_data = {
@@ -235,6 +237,8 @@ def test_enrich_balrog_manifest(context, branch, action):
         ]]
     if action != "push-to-nightly":
         expected_data['tc_release'] = True
+        expected_data['build_number'] = 33
+        expected_data['version'] = '99.0b44'
     else:
         expected_data['tc_nightly'] = True
 
