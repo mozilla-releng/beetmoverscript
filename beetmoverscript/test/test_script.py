@@ -384,10 +384,10 @@ def test_move_beets(event_loop, partials):
 
 # move_beet {{{1
 @pytest.mark.parametrize('update_manifest,action', [
-     (True,'push-to-candidates'),
-     (True,'push-to-nightly'),
-     (False,'push-to-nightly'),
-     (False,'push-to-candidates')
+     (True, 'push-to-candidates'),
+     (True, 'push-to-nightly'),
+     (False, 'push-to-nightly'),
+     (False, 'push-to-candidates')
 ])
 def test_move_beet(event_loop, update_manifest, action):
     context = Context()
