@@ -2,7 +2,7 @@
 All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
-## [3.4.0] - TODO
+## [3.4.0] - 2017-12-05
 ### Added
 - beetmoverscript support to handle in-tree scheduled Firefox releases
 
