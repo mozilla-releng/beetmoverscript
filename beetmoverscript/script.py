@@ -290,15 +290,15 @@ def generate_balrog_info(context, artifact_pretty_name, locale, destinations, fr
         "size": checksums[artifact_pretty_name]['size'],
         "url": url
     }
-    partials = get_partials_props(context.task)
     if from_buildid:
         data["from_buildid"] = from_buildid
-        # TODO: improve this search by creating a dedicated dict with buildid
-        # as key
-        for p in partials.values():
-            if p['buildid'] == str(from_buildid):
-                data['previousVersion'] = p['previousVersion']
-                data['previousBuildNumber'] = p['previousBuildNumber']
+        if is_promotion_action(context.action):
+            partials = get_partials_props(context.task)
+            # TODO: improve search by a dedicated dict with buildid as key
+            for p in partials.values():
+                if p['buildid'] == str(from_buildid):
+                    data['previousVersion'] = p['previousVersion']
+                    data['previousBuildNumber'] = p['previousBuildNumber']
 
     return data
 
