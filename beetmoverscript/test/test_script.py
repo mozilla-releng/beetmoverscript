@@ -388,6 +388,25 @@ def test_move_beet(event_loop, update_manifest):
     context = Context()
     context.config = get_fake_valid_config()
     context.task = get_fake_valid_task()
+    context.task['extra'] = dict()
+    context.task['extra']['partials'] = [
+        {
+            "artifact_name": "target-98.0b96.partial.mar",
+            "platform": "linux",
+            "locale": "de",
+            "buildid": "19991231235959",
+            "previousVersion": "98.0b96",
+            "previousBuildNumber": "1"
+        },
+        {
+            "artifact_name": "target-97.0b96.partial.mar",
+            "platform": "linux",
+            "locale": "de",
+            "buildid": "22423423402984",
+            "previousVersion": "97.0b96",
+            "previousBuildNumber": "1"
+        }
+    ]
     context.checksums = dict()
     context.balrog_manifest = list()
     context.raw_balrog_manifest = dict()
@@ -437,6 +456,8 @@ def test_move_beet(event_loop, update_manifest):
                       from_buildid='19991231235959')
         )
     if update_manifest:
+        expected_balrog_manifest['previousBuildNumber'] = '1'
+        expected_balrog_manifest['previousVersion'] = '98.0b96'
         for k in expected_balrog_manifest.keys():
             assert (context.raw_balrog_manifest[locale]['partialInfo'][0][k] ==
                     expected_balrog_manifest[k])
